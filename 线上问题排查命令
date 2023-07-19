@@ -1,0 +1,8 @@
+jps --查看运行的 Java 进程 ID
+top -p [pid] --查看进程使用 CPU 和 MEM 的情况
+top -Hp [pid] --查看进程下的所有线程占 CPU 和 MEM 的情况 -- 获取线程id
+printf "%x\n" [pid] --转换为 16 进制
+jstack 1411 -- 抓取线程栈 -- jstack 1411 > a.txt 输出
+jstat -gcutil 1411 5000 10 --每隔 5 秒输出 GC 信息，输出 10 次
+jstat -gccause 1411 5000 --同样是输出 GC 摘要信息
+jmap -heap [pid] --查看堆的摘要信息
