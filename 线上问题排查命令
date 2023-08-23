@@ -1,8 +1,11 @@
 jps --查看运行的 Java 进程 ID
-top -p [pid] --查看进程使用 CPU 和 MEM 的情况
+top --任务管理器，里面会有jps的java进程。一个服务器部署多个项目（多个用户），非当前用户没有权限执行
 top -Hp [pid] --查看进程下的所有线程占 CPU 和 MEM 的情况 -- 获取线程id
+jstack 进程id -- 抓取进程栈信息 -- jstack PID > a.txt 输出操作
 printf "%x\n" [pid] --转换为 16 进制
-jstack 1411 -- 抓取线程栈 -- jstack 1411 > a.txt 输出
-jstat -gcutil 1411 5000 10 --每隔 5 秒输出 GC 信息，输出 10 次
-jstat -gccause 1411 5000 --同样是输出 GC 摘要信息
-jmap -heap [pid] --查看堆的摘要信息
+jstack 进程id | grep 16进制线程id(小写) --线程栈信息
+jstat -gcutil(gc) 进程id 5000 10 --每隔 5 秒输出 GC 信息，输出 10 次
+jstat -gccause 进程id 5000 --同样是输出 GC 摘要信息
+jmap -heap 进程id --查看堆的摘要信息
+jstat -class 进程id --类装载信息
+jinfo 进程id --配置信息
